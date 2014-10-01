@@ -23,7 +23,8 @@ Route::post('/call', function()
     $number = Input::get('phoneNumber');
 
     // Set URL for outbound call - this should be your public server URL
-    $url = 'http://' . Request::url() . '/outbound';
+    $host = parse_url(Request::url(), PHP_URL_HOST);
+    $url = 'http://' . $host . '/outbound';
 
     // Create authenticated REST client using account credentials in
     // <project root dir>/.env.php
