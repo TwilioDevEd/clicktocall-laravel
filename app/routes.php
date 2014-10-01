@@ -23,7 +23,7 @@ Route::post('/call', function()
     $number = Input::get('phoneNumber');
 
     // Set URL for outbound call - this should be your public server URL
-    $url = 'http://kw.ngrok.com/outbound';
+    $url = 'http://' . gethostname() . '/outbound';
 
     // Create authenticated REST client using account credentials in
     // <project root dir>/.env.php
