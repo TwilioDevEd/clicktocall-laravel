@@ -44,10 +44,10 @@
 			</div>
 		</div>
 	</div>
-	<!-- Include page dependencies-->
+	<!-- Include page dependencies
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/vendor/intl-phone/js/intlTelInput.min.js"></script>
-	<!-- Our app's front-end JavaScript logic-->
 	<script src="/app.js"></script>
+	-->
 </body>
 </html>
