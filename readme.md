@@ -1,25 +1,86 @@
-## Laravel PHP Framework
+# Click to Call Laravel
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+An example application implementing Click to Call using Twilio.  For a
+step-by-step tutorial, [visit this link](https://twilio.com/docs/howto/click-to-call).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+Deploy this example app to Heroku now!
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/TwilioDevEd/clicktocall-laravel)
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Installation
 
-## Official Documentation
+Step-by-step on how to deploy, configure and develop on this example app.
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+### Fastest Deploy
 
-### Contributing To Laravel
+Use Heroku to deploy this app immediately:
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/TwilioDevEd/clicktocall-laravel)
 
-### License
+### Getting Started 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+1) Grab latest source
+<pre>
+git clone git://github.com/TwilioDevEd/clicktocall-laravel.git 
+</pre>
+
+2) Navigate to folder and create new Heroku Cedar app
+<pre>
+heroku create
+</pre>
+
+3) Deploy to Heroku
+<pre>
+git push heroku master
+</pre>
+
+4) Scale your dynos
+<pre>
+heroku scale web=1
+</pre>
+
+5) Visit the home page of your new Heroku app to see your newly configured app!
+<pre>
+heroku open
+</pre>
+
+
+### Configuration
+
+#### Setting Your Environment Variables
+
+Are you using a bash shell? Use echo $SHELL to find out. For a bash shell, using the Gmail example, edit the ~/.bashrc or ~/.bashprofile file and add:
+<pre>
+export TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxx
+export TWILIO_AUTH_TOKEN=yyyyyyyyyyyyyyyyy
+export TWILIO_APP_SID=APzzzzzzzzzzzzzzzzzz
+export TWILIO_CALLER_ID=+15556667777
+</pre>
+
+Are you using Windows or Linux? You can read how to set variables [here](https://www.java.com/en/download/help/path.xml).
+
+### Development
+
+Getting your local environment setup to work with this app is similarly
+easy.  After you configure your app with the steps above, use this guide to
+get going locally:
+
+1) Install the dependencies.
+<pre>
+composer install
+</pre>
+
+2) Launch local development webserver
+<pre>
+php artisan serve
+</pre>
+
+3) Open browser to [http://localhost:8000](http://localhost:8000).
+
+4) Tweak away on `app/routes.php`.
+
+## Meta 
+
+* No warranty expressed or implied.  Software is as is. Diggity.
+* [MIT License](http://www.opensource.org/licenses/mit-license.html)
+* Lovingly crafted by Twilio Developer Education.
