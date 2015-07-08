@@ -1,0 +1,12 @@
+# docker-compose config for clicktocall-laravel
+
+web:
+  build: .
+  ports:
+    - "8000:8000"
+  volumes:
+    - .:/usr/src/app
+  environment:
+    - TWILIO_ACCOUNT_SID
+    - TWILIO_AUTH_TOKEN
+    - TWILIO_NUMBER
