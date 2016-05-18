@@ -54,14 +54,14 @@
       ## The Web Form
 
       The first step to create a real click-to-call solution is by building the form that your
-      user needs to fill on the web. No need to overthink this, the real goal is to POST the user's
+      user needs to fill on the web. No need to overthink this, the goal is to POST the user's
       phone number to your controller.
 
       So what information does this form need? An input for the phone number and
       a submit button. Since the page doesn't need to render new content after clicking, we decided to
       implement the POST action via Ajax using jQuery. Let's take a look at it.
 
-  .step(data-title='Submit the Form', data-file='public/app.js', data-highlight="11-30")
+  .step(data-title='Submitting the Form', data-file='public/app.js', data-highlight="11-30")
     :markdown
       ## Submitting the Form
 
@@ -71,7 +71,7 @@
 
       This code does the following:
 
-      * Watches for the user "submitting" the form element
+      * Intercepts the submission of the user's form
       * Submits the form data to our controller
       * Lets the user know if the submission was successful or not
 
@@ -86,8 +86,6 @@
     :markdown
       ## Making a Phone Call
 
-      Making a phone call using Twilio in PHP is very easy.
-
       First we initiate a `Services_Twilio` object with our Account SID and Auth Token. This is essentially
       our PHP REST API handler, which we could use to send SMS or a myriad of other things. But for
       now we just need it to get access to create phone calls.
@@ -95,7 +93,7 @@
       We'll use the REST API to [make an outgoing phone call][voice] which
       requires us to pass a `From` number, a `To` number and the [`URL Parameter`][url]
       that tells Twilio what to do after it connects the call to our user. In this case
-      Twilio needs to dial in the Agent once the call has
+      Twilio needs to dial the Agent in once the call has
       been placed. We'll discuss this more later.
 
       Assuming we have successfully connected our user to our agent, we need to send a response to the
@@ -112,7 +110,7 @@
       TwiML is a set of [simple verbs][verbs] written in XML that Twilio reads as instructions.
       In this case our instructions inform Twilio to simply [`SAY`][say] something to the user. If we wanted
       to connect the user to a real support agent, we would have to add a
-      [Dial verb](//www.twilio.com/docs/api/twiml/dial) that specifies the support agent number
+      [Dial verb](//www.twilio.com/docs/api/twiml/dial) that specifies the support agent's number
       so the customer can talk to him/her.
 
       In order to make writing TwiML easy, many of the helper libraries have methods that generate
@@ -135,7 +133,7 @@
       [**Automated Survey**](https://www.twilio.com/docs/howto/walkthrough/automated-survey/php/laravel)
 
       Instantly collect structured data from your users with a survey conducted
-      over a voice call or SMS text messages.
+      over a voice or an SMS text messages.
 
       [**Two-Factor Authentication**](https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/php/laravel)
 
