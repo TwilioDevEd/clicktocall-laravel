@@ -13,7 +13,7 @@
 <p>Let&#39;s go over the necessary steps to implement click-to-call:</p>
 <p><img src="//s3-us-west-2.amazonaws.com/deved/clicktocall.png" alt="Click-to-call Diagram"></p>
 <ol>
-<li><p>A website visitor wants to connect to your organization.  He/she submits a web form with its
+<li><p>A website visitor wants to connect to your organization.  She submits a web form with her
 phone number to receive a call connecting her to your sales or support team.</p>
 </li>
 <li><p>Your web application receives the submission form.  An HTTP request is initiated from your
@@ -43,17 +43,18 @@ API</a> and how to create a TwiML call logic using the
 <p>To create our click-to-call application we need to setup our environment first.</p>
 <p>Let&#39;s put our Twilio credentials in a place where our application can access them. For the
 purposes of this tutorial, we&#39;ll place them as environment variables that our application can read.</p>
-<p>You can find your Twilio credentials in your <a href="//www.twilio.com/user/account/settings">Account Dashboard</a>.</p>
+<p>You can find your Twilio credentials in your <a href="//www.twilio.com/user/account">Account Dashboard</a>.</p>
 <p>For more instructions on how to run the application refer to the <a href="//github.com/TwilioDevEd/clicktocall-laravel/blob/master/readme.md">app&#39;s
 readme file</a>.</p>
 </div><div data-title="The Web Form" data-file="app/views/home.php" data-highlight="27-43" class="step"><h2 id="the-web-form">The Web Form</h2>
-<p>The first step to create a real click-to-call solution is by building the form that your
-user needs to fill on the web. No need to overthink this, the goal is to POST the user&#39;s
-phone number to your controller.</p>
+<p>The first step on creating a real click-to-call solution is by building the form that your
+user needs to fill on the web. No need to overthink this, the real goal is to POST the User&#39;s name
+and phone number to your controller.</p>
 <p>So what information does this form need? An input for the phone number and
-a submit button. Since the page doesn&#39;t need to render new content after clicking, we decided to
-implement the POST action via Ajax using jQuery. Let&#39;s take a look at it.</p>
-</div><div data-title="Submitting the Form" data-file="public/app.js" data-highlight="11-30" class="step"><h2 id="submitting-the-form">Submitting the Form</h2>
+a submit button. Since the page doesn&#39;t need to render new content after clicking
+on submit, we decided to implement the POST action via Ajax using jQuery.
+Let&#39;s take a look at it.</p>
+</div><div data-title="Submitting the Form" data-file="public/app.js" data-highlight="11-30" class="step"><h2 id="submit-the-form">Submit the Form</h2>
 <p>To make the click to call feature more seamless we used
 <a href="https://developer.mozilla.org/en-US/docs/AJAX">Ajax</a> to send the form asynchronously. This
 code shows one way you could implement this functionality using <a href="http://jquery.org">jQuery</a>.</p>
@@ -63,12 +64,12 @@ code shows one way you could implement this functionality using <a href="http://
 <li>Submits the form data to our controller</li>
 <li>Lets the user know if the submission was successful or not</li>
 </ul>
-<p>This is a common implementation of jQuery&#39;s $.ajax() method. Notice that we are
+<p>This is a common implementation of jQuery&#39;s <code>$.ajax()</code> method. Notice that we are
 returning the response message when the call has connected.</p>
 <p>Now that we have the front end done lets build the back end that will receive this data and
 call the user.</p>
 </div><div data-title="Making a Phone Call" data-file="app/routes.php" data-highlight="23-46" class="step"><h2 id="making-a-phone-call">Making a Phone Call</h2>
-<p>First we initiate a <code>Services_Twilio</code> object with our Account SID and Auth Token. This is essentially
+<p>Next we initiate a <code>Services_Twilio</code> object with our Account SID and Auth Token. This is essentially
 our PHP REST API handler, which we could use to send SMS or a myriad of other things. But for
 now we just need it to get access to create phone calls.</p>
 <p>We&#39;ll use the REST API to <a href="//www.twilio.com/docs/api/rest/making-calls">make an outgoing phone call</a> which
@@ -80,7 +81,7 @@ been placed. We&#39;ll discuss this more later.</p>
 browser telling it that all went well. This is the message that our ajax handler was expecting.</p>
 </div><div data-title="Generating TwiML" data-file="app/routes.php" data-highlight="53-67" class="step"><h2 id="generating-twiml">Generating TwiML</h2>
 <p>TwiML is a set of <a href="//www.twilio.com/docs/api/twiml#verbs">simple verbs</a> written in XML that Twilio reads as instructions.
-In this case our instructions inform Twilio to simply <a href="//www.twilio.com/docs/api/twiml/say"><code>SAY</code></a> something to the user. If we wanted
+In this case our instructions inform Twilio to simply SAY something to the user. If we wanted
 to connect the user to a real support agent, we would have to add a
 <a href="//www.twilio.com/docs/api/twiml/dial">Dial verb</a> that specifies the support agent&#39;s number
 so the customer can talk to him/her.</p>
