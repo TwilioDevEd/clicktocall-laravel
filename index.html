@@ -13,8 +13,8 @@
 <p>Let&#39;s go over the necessary steps to implement click-to-call:</p>
 <p><img src="//s3-us-west-2.amazonaws.com/deved/clicktocall.png" alt="Click-to-call Diagram"></p>
 <ol>
-<li><p>A website visitor wants to connect to your organization.  She submits
-a web form with her phone number to receive a call connecting her to
+<li><p>A website visitor wants to connect to your organization.  He/she submits
+a web form with its phone number to receive a call connecting her to
 your sales or support team.</p>
 </li>
 <li><p>Your web application receives the submission form.  An HTTP request is
@@ -54,7 +54,7 @@ environment variables that our application can read.</p>
 </div><div data-title="The Web Form" data-file="app/views/home.php" data-highlight="27-43" class="step"><h2 id="the-web-form">The Web Form</h2>
 <p>The first step on creating a real click-to-call solution is by building
 the form that your user needs to fill on the web. No need to overthink
-this, the real goal is to POST the User&#39;s name and phone number to
+this, the goal is to POST the User&#39;s name and phone number to
 your controller.</p>
 <p>So what information does this form need? An input for the phone number and
 a submit button. Since the page doesn&#39;t need to render new content after
