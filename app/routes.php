@@ -50,11 +50,11 @@ Route::post('/call', function () {
 // POST URL to handle form submission and make outbound call
 Route::post('/outbound', function () {
     // A message for Twilio's TTS engine to repeat
-    $sayMessage = 'Thanks for contacting our sales department. If this were a 
-        real click to call application, we would redirect your call to our 
+    $sayMessage = 'Thanks for contacting our sales department. If this were a
+        real click to call application, we would redirect your call to our
         sales team right now using the Dial tag.';
 
-    $twiml = new \Twilio\Twiml();
+    $twiml = new Twilio\Twiml();
     $twiml->say($sayMessage, array('voice' => 'alice'));
 
     $response = Response::make($twiml, 200);
