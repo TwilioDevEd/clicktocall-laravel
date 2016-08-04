@@ -1,161 +1,161 @@
 .chapter(data-title='Click to Call Laravel')
-    .step(data-title='How It Works', data-file='.env.php')
-        :markdown
-            ## How It Works
+  .step(data-title='How It Works', data-file='.env.php')
+    :markdown
+      ## How It Works
 
-            Let's go over the necessary steps to implement click-to-call:
+      Let's go over the necessary steps to implement click-to-call:
 
-            ![Click-to-call Diagram](//s3-us-west-2.amazonaws.com/deved/clicktocall.png)
+      ![Click-to-call Diagram](//s3-us-west-2.amazonaws.com/deved/clicktocall.png)
 
-            1. A website visitor wants to connect to your organization.  She submits
-            a web form with her phone number to receive a call connecting her to
-            your sales or support team.
+      1. A website visitor wants to connect to your organization.  She submits
+      a web form with her phone number to receive a call connecting her to
+      your sales or support team.
 
-            1. Your web application receives the submission form.  An HTTP request is
-            initiated from your application to Twilio to initiate an outbound call.
+      1. Your web application receives the submission form.  An HTTP request is
+      initiated from your application to Twilio to initiate an outbound call.
 
-            1. Twilio receives the request and initiates a call to the user's phone
-            number.
+      1. Twilio receives the request and initiates a call to the user's phone
+      number.
 
-            1. User receives the call.
+      1. User receives the call.
 
-            1. After the call connects, Twilio asks our application for [TwiML
-            instructions](//www.twilio.com/docs/api/twiml). Our TwiML instructs Twilio
-            to connect the user to our sales or support teams.
+      1. After the call connects, Twilio asks our application for [TwiML
+      instructions](//www.twilio.com/docs/api/twiml). Our TwiML instructs Twilio
+      to connect the user to our sales or support teams.
 
-            ## What We Will Learn
+      ## What We Will Learn
 
-            This How-To demonstrates how to initialize a call using the [Twilio REST
-            API](//www.twilio.com/docs/api/rest) and how to create a TwiML call logic
-            using the [Say](//www.twilio.com/docs/api/twiml/say) verb.
+      This How-To demonstrates how to initialize a call using the [Twilio REST
+      API](//www.twilio.com/docs/api/rest) and how to create a TwiML call logic
+      using the [Say](//www.twilio.com/docs/api/twiml/say) verb.
 
-            Sounds like a plan? Let's get started!
+      Sounds like a plan? Let's get started!
 
-            ---
+      ---
 
-            **See Also:**
-            * [Twilio REST API](//www.twilio.com/docs/api/rest)
-            * [TwiML Say Verb](//www.twilio.com/docs/api/twiml/say)
+      **See Also:**
+      * [Twilio REST API](//www.twilio.com/docs/api/rest)
+      * [TwiML Say Verb](//www.twilio.com/docs/api/twiml/say)
 
-    .step(data-title='Environment', data-file='.env.php')
-        :markdown
-            ## Environment
+  .step(data-title='Environment', data-file='.env.php')
+    :markdown
+      ## Environment
 
-            To create our click-to-call application we need to setup our environment
-            first.
+      To create our click-to-call application we need to setup our environment
+      first.
 
-            Let's put our Twilio credentials in a place where our application can
-            access them. For the purposes of this tutorial, we'll place them as
-            environment variables that our application can read.
+      Let's put our Twilio credentials in a place where our application can
+      access them. For the purposes of this tutorial, we'll place them as
+      environment variables that our application can read.
 
-            You can find your Twilio credentials in your
-            [Account Dashboard](//www.twilio.com/user/account).
+      You can find your Twilio credentials in your
+      [Account Dashboard](//www.twilio.com/user/account).
 
-            For more instructions on how to run the application refer to the
-            [app's readme file](//github.com/TwilioDevEd/clicktocall-laravel/blob/master/readme.md).
+      For more instructions on how to run the application refer to the
+      [app's readme file](//github.com/TwilioDevEd/clicktocall-laravel/blob/master/readme.md).
 
-    .step(data-title="The Web Form", data-file='app/views/home.php', data-highlight="27-43")
-        :markdown
-            ## The Web Form
+  .step(data-title="The Web Form", data-file='app/views/home.php', data-highlight="27-43")
+    :markdown
+      ## The Web Form
 
-            The first step on creating a real click-to-call solution is by building
-            the form that your user needs to fill on the web. No need to overthink
-            this, the real goal is to POST the User's name and phone number to
-            your controller.
+      The first step on creating a real click-to-call solution is by building
+      the form that your user needs to fill on the web. No need to overthink
+      this, the real goal is to POST the User's name and phone number to
+      your controller.
 
-            So what information does this form need? An input for the phone number and
-            a submit button. Since the page doesn't need to render new content after
-            clicking on submit, we decided to implement the POST action via Ajax
-            using jQuery.
-            Let's take a look at it.
+      So what information does this form need? An input for the phone number and
+      a submit button. Since the page doesn't need to render new content after
+      clicking on submit, we decided to implement the POST action via Ajax
+      using jQuery.
+      Let's take a look at it.
 
-    .step(data-title='Submitting the Form', data-file='public/app.js', data-highlight="11-30")
-        :markdown
-            ## Submit the Form
+  .step(data-title='Submitting the Form', data-file='public/app.js', data-highlight="11-30")
+    :markdown
+      ## Submit the Form
 
-            To make the click to call feature more seamless we used
-            [Ajax](https://developer.mozilla.org/en-US/docs/AJAX) to send the form
-            asynchronously. This code shows one way you could implement this
-            functionality using [jQuery](http://jquery.org).
+      To make the click to call feature more seamless we used
+      [Ajax](https://developer.mozilla.org/en-US/docs/AJAX) to send the form
+      asynchronously. This code shows one way you could implement this
+      functionality using [jQuery](http://jquery.org).
 
-            This code does the following:
+      This code does the following:
 
-            * Intercepts the submission of the user's form
-            * Submits the form data to our controller
-            * Lets the user know if the submission was successful or not
+      * Intercepts the submission of the user's form
+      * Submits the form data to our controller
+      * Lets the user know if the submission was successful or not
 
-            This is a common implementation of jQuery's `$.ajax()` method. Notice that
-            we are returning the response message when the call has connected.
+      This is a common implementation of jQuery's `$.ajax()` method. Notice that
+      we are returning the response message when the call has connected.
 
-            Now that we have the front end done lets build the back end that will
-            receive this data and call the user.
+      Now that we have the front end done lets build the back end that will
+      receive this data and call the user.
 
-    .step(data-title='Making a Phone Call', data-file='app/routes.php',
+  .step(data-title='Making a Phone Call', data-file='app/routes.php',
     data-highlight="18-48")
-        :markdown
-            ## Making a Phone Call
+    :markdown
+      ## Making a Phone Call
 
-            Next we initiate a `Twilio\Rest\Client` object with our Account SID and
-            Auth Token. This is essentially our PHP REST API handler, which we
-            could use to send SMS or a myriad of other things. But for
-            now we just need it to get access to create phone calls.
+      Next we initiate a `Twilio\Rest\Client` object with our Account SID and
+      Auth Token. This is essentially our PHP REST API handler, which we
+      could use to send SMS or a myriad of other things. But for
+      now we just need it to get access to create phone calls.
 
-            We'll use the REST API to [make an outgoing phone call][voice] which
-            requires us to pass a `To` number, a `From` number and an array which
-            contains the  [`URL Parameter`][url] that tells Twilio what to do after it
-            connects the call to our user. In this case Twilio needs to dial the Agent
-            in once the call has been placed. We'll discuss this more later.
+      We'll use the REST API to [make an outgoing phone call][voice] which
+      requires us to pass a `To` number, a `From` number and an array which
+      contains the  [`URL Parameter`][url] that tells Twilio what to do after it
+      connects the call to our user. In this case Twilio needs to dial the Agent
+      in once the call has been placed. We'll discuss this more later.
 
-            Assuming we have successfully connected our user to our agent, we need to
-            send a response to the browser telling it that all went well. This is
-            the message that our ajax handler was expecting.
+      Assuming we have successfully connected our user to our agent, we need to
+      send a response to the browser telling it that all went well. This is
+      the message that our ajax handler was expecting.
 
-            [voice]: //www.twilio.com/docs/api/rest/making-calls
-            [url]: //www.twilio.com/docs/api/rest/making-calls#url-parameter
+      [voice]: //www.twilio.com/docs/api/rest/making-calls
+      [url]: //www.twilio.com/docs/api/rest/making-calls#url-parameter
 
-    .step(data-title='Generating TwiML', data-file='app/routes.php',
+  .step(data-title='Generating TwiML', data-file='app/routes.php',
     data-highlight='50-63')
-        :markdown
-            ## Generating TwiML
+    :markdown
+      ## Generating TwiML
 
-            TwiML is a set of [simple verbs][verbs] written in XML that Twilio reads
-            as instructions. In this case our instructions inform Twilio to simply
-            `SAY` something to the user. If we wanted to connect the user to a
-            real support agent, we would have to add a
-            [Dial verb](//www.twilio.com/docs/api/twiml/dial) that specifies the
-            support agent's number so the customer can talk to him/her.
+      TwiML is a set of [simple verbs][verbs] written in XML that Twilio reads
+      as instructions. In this case our instructions inform Twilio to simply
+      `SAY` something to the user. If we wanted to connect the user to a
+      real support agent, we would have to add a
+      [Dial verb](//www.twilio.com/docs/api/twiml/dial) that specifies the
+      support agent's number so the customer can talk to him/her.
 
-            In order to make writing TwiML easy, many of the helper libraries have
-            methods that generate TwiML for you. In this case we use
-            [twilio-php](//www.twilio.com/docs/php/install) to create a TwiML
-            response that will instruct Twilio to say something.
+      In order to make writing TwiML easy, many of the helper libraries have
+      methods that generate TwiML for you. In this case we use
+      [twilio-php](//www.twilio.com/docs/php/install) to create a TwiML
+      response that will instruct Twilio to say something.
 
-            [verbs]: //www.twilio.com/docs/api/twiml#verbs
-            [say]: //www.twilio.com/docs/api/twiml/say
+      [verbs]: //www.twilio.com/docs/api/twiml#verbs
+      [say]: //www.twilio.com/docs/api/twiml/say
 
-    .step(data-title='Where to Next?')
-        :markdown
-            ## Where to next?
+  .step(data-title='Where to Next?')
+    :markdown
+      ## Where to next?
 
-            That's it! We've just implemented click to call that allow your customers
-            to connect with a support agent.
+      That's it! We've just implemented click to call that allow your customers
+      to connect with a support agent.
 
-            If you're a PHP developer working with Twilio, you
-            might enjoy these other tutorials:
+      If you're a PHP developer working with Twilio, you
+      might enjoy these other tutorials:
 
-            [**Automated Survey**](https://www.twilio.com/docs/howto/walkthrough/automated-survey/php/laravel)
+      [**Automated Survey**](https://www.twilio.com/docs/howto/walkthrough/automated-survey/php/laravel)
 
-            Instantly collect structured data from your users with a survey conducted
-            over a voice or an SMS text messages.
+      Instantly collect structured data from your users with a survey conducted
+      over a voice or an SMS text messages.
 
-            [**Two-Factor Authentication**](https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/php/laravel)
+      [**Two-Factor Authentication**](https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/php/laravel)
 
-            Improve the security of Laravel's built-in login functionality by adding
-            two-factor authentication via text message.
+      Improve the security of Laravel's built-in login functionality by adding
+      two-factor authentication via text message.
 
-            ### Did this help?
+      ### Did this help?
 
-            Thanks for checking out this tutorial! If you have any feedback to
-            share with us, we'd love to hear it.
-            [Contact the Twilio Developer Education Team](mailto:deved-oss@twilio.com)
-            to let us know what you think.
+      Thanks for checking out this tutorial! If you have any feedback to
+      share with us, we'd love to hear it.
+      [Contact the Twilio Developer Education Team](mailto:deved-oss@twilio.com)
+      to let us know what you think.
