@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9fa552633828338ef4fa18e3fff75bd5",
-    "content-hash": "73db962bb69e1530b34cdf7eef3c2a11",
+    "hash": "57b9acd0d2909739f7c894fa5f335f24",
+    "content-hash": "d6963cf1bdc235d15aa332860999555e",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1661,16 +1661,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.0.0-RC14",
+            "version": "5.0.0-RC19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "7afec5a273ba83ab9fda5efa0b103a5c900e9e6d"
+                "reference": "43226dde30e04fde18550d9ba3bfcbbd54ee9609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/7afec5a273ba83ab9fda5efa0b103a5c900e9e6d",
-                "reference": "7afec5a273ba83ab9fda5efa0b103a5c900e9e6d",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/43226dde30e04fde18550d9ba3bfcbbd54ee9609",
+                "reference": "43226dde30e04fde18550d9ba3bfcbbd54ee9609",
                 "shasum": ""
             },
             "require": {
@@ -1702,7 +1702,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2016-08-03 22:42:05"
+            "time": "2016-08-08 22:34:24"
         }
     ],
     "packages-dev": [],
