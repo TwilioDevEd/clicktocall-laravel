@@ -25,11 +25,15 @@
 
       ## What We Will Learn
 
-      This How-To demonstrates how to initialize a call using the [Twilio REST
-      API](//www.twilio.com/docs/api/rest) and how to create a TwiML call logic
-      using the [Say](//www.twilio.com/docs/api/twiml/say) verb.
+      This How-To demonstrates initializing a call using the [Twilio REST
+      API][rest] and creating TwiML call logic using the [Say][say]
+      and [Dial][dial] verbs.
 
-      Sounds like a plan? Let's get started!
+      Sound like a plan? Let's get started!
+
+      [rest]: //www.twilio.com/docs/api/rest/
+      [dial]: //www.twilio.com/docs/api/twiml/dial
+      [say]:  //www.twilio.com/docs/api/twiml/say
 
       ---
 
@@ -54,7 +58,7 @@
       For more instructions on how to run the application refer to the
       [app's readme file](//github.com/TwilioDevEd/clicktocall-laravel/blob/master/readme.md).
 
-  .step(data-title="The Web Form", data-file='app/views/home.php', data-highlight="27-43")
+  .step(data-title="The Web Form", data-file='app/views/home.php', data-highlight="27-49")
     :markdown
       ## The Web Form
 
@@ -91,7 +95,7 @@
       receive this data and call the user.
 
   .step(data-title='Making a Phone Call', data-file='app/routes.php',
-    data-highlight="18-48")
+    data-highlight="17-48")
     :markdown
       ## Making a Phone Call
 
@@ -114,16 +118,15 @@
       [url]: //www.twilio.com/docs/api/rest/making-calls#url-parameter
 
   .step(data-title='Generating TwiML', data-file='app/routes.php',
-    data-highlight='50-63')
+    data-highlight='49-63')
     :markdown
       ## Generating TwiML
 
       TwiML is a set of [simple verbs][verbs] written in XML that Twilio reads
-      as instructions. In this case our instructions inform Twilio to simply
-      `SAY` something to the user. If we wanted to connect the user to a
-      real support agent, we would have to add a
-      [Dial verb](//www.twilio.com/docs/api/twiml/dial) that specifies the
-      support agent's number so the customer can talk to him/her.
+      as instructions. In this case our instructions inform Twilio to
+      [SAY](https://www.twilio.com/docs/api/twiml/say) something to the user and
+      then [DIAL](//www.twilio.com/docs/api/twiml/dial) the support agent's number
+      so the customer can talk to him/her.
 
       In order to make writing TwiML easy, many of the helper libraries have
       methods that generate TwiML for you. In this case we use

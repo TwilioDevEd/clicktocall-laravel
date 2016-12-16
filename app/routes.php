@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -18,8 +17,8 @@ Route::get('/', function () {
 // POST URL to handle form submission and make outbound call
 Route::post('/call', function () {
     // Get form input
-    $number = Input::get('phoneNumber');
-
+    $userPhone = Input::get('userPhone');
+    $encodedSalesPhone = urlencode(Input::get('salesPhone'));
     // Set URL for outbound call - this should be your public server URL
     $host = parse_url(Request::url(), PHP_URL_HOST);
 
@@ -32,10 +31,10 @@ Route::post('/call', function () {
 
     try {
         $client->calls->create(
-            $number, // The visitor's phone number
+            $userPhone, // The visitor's phone number
             getenv('TWILIO_NUMBER'), // A Twilio number in your account
             array(
-                "url" => "http://$host/outbound"
+                "url" => "http://$host/outbound/$encodedSalesPhone"
             )
         );
     } catch (Exception $e) {
@@ -48,14 +47,14 @@ Route::post('/call', function () {
 });
 
 // POST URL to handle form submission and make outbound call
-Route::post('/outbound', function () {
+Route::post('/outbound/{salesPhone}', function ($salesPhone) {
     // A message for Twilio's TTS engine to repeat
-    $sayMessage = 'Thanks for contacting our sales department. If this were a
-        real click to call application, we would redirect your call to our
-        sales team right now using the Dial tag.';
+    $sayMessage = 'Thanks for contacting our sales department. Our
+        next available representative will take your call.';
 
     $twiml = new Twilio\Twiml();
     $twiml->say($sayMessage, array('voice' => 'alice'));
+    $twiml->dial($salesPhone);
 
     $response = Response::make($twiml, 200);
     $response->header('Content-Type', 'text/xml');
