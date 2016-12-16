@@ -3,9 +3,9 @@
 <head>
 	<title>Click To Call Tutorial</title>
 	<!-- We use Twitter Bootstrap as the default styling for our page-->
-	<link rel="stylesheet" 
+	<link rel="stylesheet"
 		href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" 
+	<link rel="stylesheet"
 		href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<!-- Include CSS for our third-party telephone input jQuery plugin-->
 	<link rel="stylesheet" href="/vendor/intl-phone/css/intlTelInput.css">
@@ -14,8 +14,8 @@
 	<div class="container">
 		<h1>Click To Call</h1>
 		<p>
-			Click To Call converts your website's users into engaged customers by 
-			creating an easy way for your customers to contact your sales and 
+			Click To Call converts your website's users into engaged customers by
+			creating an easy way for your customers to contact your sales and
 			support teams right on your website.
 		</p>
 		<p>Here's an example of how it's done!</p>
@@ -28,15 +28,21 @@
 					<div class="form-group">
 						<h3>Call Sales</h3>
 						<p class="help-block">
-							Are you interested in impressing your friends and 
-							confounding your enemies? Enter your phone number 
+							Are you interested in impressing your friends and
+							confounding your enemies? Enter your phone number
 							below, and our team will contact you right away.
 						</p>
 					</div>
-					<div class="form-group">
-						<input type="text" id="phoneNumber" 
-							placeholder="(651) 555-7889" class="form-control">
-					</div>
+                    <label>Your number</label>
+                    <div class="form-group">
+                       <input class="form-control" type="text" name="userPhone" id="userPhone"
+                              placeholder="(651) 555-7889">
+                    </div>
+                    <label>Sales team number</label>
+                    <div class="form-group">
+                       <input class="form-control" type="text" name="salesPhone" id="salesPhone"
+                              placeholder="(651) 555-7889">
+                     </div>
 					<button type="submit" class="btn btn-default">
 						Contact Sales
 					</button>
