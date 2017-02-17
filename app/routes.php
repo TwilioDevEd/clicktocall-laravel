@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::post('/call', function () {
     // Get form input
     $userPhone = Input::get('userPhone');
-    $encodedSalesPhone = urlencode(Input::get('salesPhone'));
+    $encodedSalesPhone = urlencode(str_replace(' ','',Input::get('salesPhone')));
     // Set URL for outbound call - this should be your public server URL
     $host = parse_url(Request::url(), PHP_URL_HOST);
 
