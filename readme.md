@@ -12,12 +12,6 @@ An application example implementing Click to Call using Twilio.
 
 Step-by-step on how to deploy, configure and develop on this example app.
 
-### Fastest Deploy
-
-Use Heroku to deploy this app immediately:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/TwilioDevEd/clicktocall-laravel)
-
 ## Local Development
 
 1. Grab latest source
