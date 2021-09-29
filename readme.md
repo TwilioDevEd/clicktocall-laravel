@@ -16,40 +16,35 @@ An application example implementing Click to Call using Twilio.
      $ git clone git://github.com/TwilioDevEd/clicktocall-laravel.git
     ```
 
-1. Setup your environment variables
+2. Copy .env.example to .env to set up your configuration file:
 
-   Are you using a bash shell? Use echo $SHELL to find out. For a bash
-   shell, edit the ~/.bashrc or ~/.bashprofile file and add:
-
-   ```sh
-    export TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxx
-    export TWILIO_AUTH_TOKEN=yyyyyyyyyyyyyyyyy
-    export TWILIO_NUMBER=+15556667777
+   ```bash
+   cp .env.example .env
    ```
+   Edit `.env` with your Twilio account information.
 
-   Or just export the same variables for this session.
 
-1. Install the dependencies with [Composer](https://getcomposer.org/).
+3. Install the dependencies with [Composer](https://getcomposer.org/).
 
    ```bash
    $ composer install
    ```
 
-1. Generate an `APP_KEY`.
+4. Generate an `APP_KEY`.
 
    ```bash
    $ php artisan key:generate
    ```
 
-1. Start the server.
+5. Start the server.
 
    ```bash
    $ php artisan serve
    ```   
 
-1. [Expose the application to the wider internet](#expose-the-application-to-the-wider-internet)
+6. [Expose the application to the wider internet](#expose-the-application-to-the-wider-internet)
 
-1. Check out the app at `http://<sub-domain>.ngrok.io`.
+7. Check out the app at `http://<sub-domain>.ngrok.io`.
 
 ### Expose the Application to the Wider Internet
 
@@ -62,11 +57,11 @@ An application example implementing Click to Call using Twilio.
    $ ngrok http 8000
   ```
 
-  Once ngrok is running, open up your browser and go to your ngrok URL.
-  It will look something like this: `http://<sub-domain>.ngrok.io`
+Once ngrok is running, open up your browser and go to your ngrok URL.
+It will look something like this: `http://<sub-domain>.ngrok.io`
 
 ## Meta
 
- * No warranty expressed or implied. Software is as is. Diggity.
- * [MIT License](http://www.opensource.org/licenses/mit-license.html)
- * Lovingly crafted by Twilio Developer Education.
+* No warranty expressed or implied. Software is as is. Diggity.
+* [MIT License](http://www.opensource.org/licenses/mit-license.html)
+* Lovingly crafted by Twilio Developer Education.

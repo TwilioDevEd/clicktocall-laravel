@@ -23,7 +23,7 @@ Route::post('/call', function () {
     $host = parse_url(Request::url(), PHP_URL_HOST);
 
     // Create authenticated REST client using account credentials in
-    // <project root dir>/.env.php
+    // <project root dir>/.env
     $client = new Twilio\Rest\Client(
         getenv('TWILIO_ACCOUNT_SID'),
         getenv('TWILIO_AUTH_TOKEN')
