@@ -2,11 +2,11 @@
   <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
 </a>
 
-# Click to Call Laravel
+# Deprecated Tutorial - Use Click to Call PHP
 
-An application example implementing Click to Call using Twilio.
+We have deprecated this Laravel tutorial, but please try our [Click to Call PHP example](https://github.com/TwilioDevEd/clicktocall-php)
 
-[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/click-to-call/php/laravel)!
+[Learn more about Click to Call here](https://www.twilio.com/docs/voice/tutorials/click-to-call)!
 
 ## Local Development
 
